@@ -1,57 +1,247 @@
 <!DOCTYPE html>
-<head>	
-<style>
-@font-face {
-font-family:"pulukin";
-src: 
-	url('PuLukin.otf') format('opentype');
-}
-@font-face {
-font-family:"quicksand";
-src: 
-	url('Quicksand-Medium.ttf')
-}
-@font-face {
-font-family:"quicksand2";
-src: 
-	url('Quicksand-Bold.ttf')
-}
-header {
-	font-size:100px;
-	font-family:pulukin;
-}
-textarea {
-	font-family:pulukin;
-	margin: 0.5%;
-	padding: 3;
-	border: 1;
-	width: 94%;
-	height: 600px;
-	font-size:50px;
-	autocapitalize:off;
-	autocorrect:off;
-}
-p {
-	font-family: quicksand, sans-serif;
-}
-h1 {
-	font-family: quicksand2, sans-serif;
-}
-</style>
+<link rel="manifest" href="/app.webmanifest">
+<title>ijo sitelen lili</title>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+<head>
+	<style>
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
+
+		* {
+			margin: 0;
+		}
+
+		@font-face {
+			font-family: "ponapona";
+			src:
+				url('./fonts/sitelen-pona-pona-1.otf') format('opentype');
+		}
+
+		@font-face {
+			font-family: "pulukin";
+			src:
+				url('./fonts/PuLukin.otf') format('opentype');
+		}
+
+		@font-face {
+			font-family: "sitelenselikiwenatuki";
+			src:
+				url('./fonts/sitelenselikiwenasuki.ttf') format('truetype');
+		}
+
+
+		:root {
+			color-scheme: light dark;
+
+			/* @link https://utopia.fyi/type/calculator?c=375,30,1.2,1240,40,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+			--step--2: clamp(1.3021rem, 1.1729rem + 0.5511vw, 1.6rem);
+			--step--1: clamp(1.5625rem, 1.3728rem + 0.8092vw, 2rem);
+			--step-0: clamp(1.875rem, 1.604rem + 1.1561vw, 2.5rem);
+			--step-1: clamp(2.25rem, 1.8707rem + 1.6185vw, 3.125rem);
+			--step-2: clamp(2.7rem, 2.1771rem + 2.2312vw, 3.9063rem);
+			--step-3: clamp(3.24rem, 2.5278rem + 3.0387vw, 4.8828rem);
+			--step-4: clamp(3.888rem, 2.9275rem + 4.0981vw, 6.1035rem);
+			--step-5: clamp(4.6656rem, 3.3807rem + 5.4822vw, 7.6294rem);
+
+			--light-bg: ghostwhite;
+			--light-color: #111;
+
+			--dark-bg: black;
+			--dark-color: ghostwhite;
+		}
+
+		body {
+			font-size: var(--step-0);
+			-webkit-font-smoothing: antialiased;
+			line-height: 1.5;
+			background-color: light-dark(var(--light-bg), var(--dark-bg));
+			color: light-dark(var(--light-color), var(--dark-color));
+		}
+
+		.footer {
+			position: absolute;
+			bottom: 30px;
+			right: 20px;
+			height: var(--step-1);
+			display: flex;
+		}
+
+		button {
+			font-family: sitelenselikiwenatuki;
+			font-size: var(--step-0);
+			height: var(--step-1);
+			margin-right: 6px;
+			border-radius: 6px;
+			padding: 0 3px;
+			border: 2px solid light-dark(var(--light-color), var(--dark-color));
+			background-color: light-dark(var(--light-bg), var(--dark-bg));
+			color: light-dark(var(--light-color), var(--dark-color));
+		}
+
+		select {
+			padding: 0 0 0 6px;
+			height: var(--step-1);
+			border-radius: 6px;
+			border: 2px solid light-dark(var(--light-color), var(--dark-color));
+			background-color: light-dark(var(--light-bg), var(--dark-bg));
+			color: light-dark(var(--light-color), var(--dark-color));
+		}
+
+		#lipu {
+			background-color: light-dark(var(--light-bg), var(--dark-bg));
+			color: light-dark(var(--light-color), var(--dark-color));
+			padding: 1em;
+			height: 100vh;
+			width: 100vw;
+			font-size: var(--step-1);
+			autocapitalize: off;
+			autocorrect: off;
+			outline: none;
+			border: 0;
+		}
+
+		.pimeja {
+			color-scheme: dark;
+		}
+
+		.walo {
+			color-scheme: light;
+		}
+
+		#darkmode {
+			font-family: sitelenselikiwenatuki;
+			font-size: 1em;
+			margin-right: 6px;
+		}
+
+		.pimeja button,
+		.pimeja select,
+		.pimeja select::picker {
+			color: #fff;
+			background-color: light-dark(var(--light-bg), var(--dark-bg));
+			color: light-dark(var(--light-color), var(--dark-color));
+		}
+	</style>
 </head>
+
 <body>
-<header>o kepeken linja pi pu lukin</header>
-<textarea spellcheck="false" label="tpinput">sina ken kepeken e linja lon ni</textarea>
-<div>
-<p><a href="PuLukin.otf">Download PuLukin</a>
-<h1>What is PuLukin?</h1>
-<p><b>linja pi pu lukin</b> (or PuLukin for short) is a sitelen pona font developed by jan Sa. Its goal was to achieve a handwritten style that stems from the official symbols in pu, and treat unofficial words with the same respect. It started as a small goal to try and find existing sitelen pona characters for every word in <a href="https://docs.google.com/spreadsheets/d/1t-pjAgZDyKPXcCRnEdATFQOxGbQFMjZm-8EvXiQd2Po/edit?usp=sharing" target="_blank">nimi ale pona</a>, but grew into this larger project. Thank you so much to everyone who shows their love to this little font of mine!
-<h1>How to use the font:</h1>
-<p>BROWSER BUG ONLY: If the characters are no popping up correctly (i.e. toki shows up as to ki) then simply cut (ctrl+x) and paste (ctrl+v) your text.
-<p><b>sitelen pona:</b> Toki Pona words are automatically replaced with their sitelen pona characters. You can use [ and ] to create cartouches (at the moment there is no way to have them connect, I'm trying to figure something out).
-<p><b>sitelen Lasina:</b> It is possible to use Latin characters in this font. For a, e, n, and o, add a 1 after them to revert them from their sitelen pona character. To stop a word from becoming a sitelen pona character, add a hyphen somewhere in the middle (the hyphen is invisible). Example: the word "test" can be written as "t-e1st"
-<h1>Updates:</h1>
-<p>8/22/21: nimi ku en sitelen Lasina li lon! The font now supports all nimi ku! You can now also use sitelen Lasina! kokosila, te, to, and yupekosi have been updated!
-<p>Next update: Modifiers. If you want a specific combination that isn't common, <a target="_blank" href="https://forms.gle/38h8ad561hgbneS86">submit a proposal here</a>.</p>
-</div>
+	<div class="footer">
+		<select name="type" id="darkmode">
+			<option value="dark" selected>
+				pimeja
+			</option>
+			<option value="light">
+				walo
+			</option>
+			<option value="auto">
+				ijo+wile
+			</option>
+		</select>
+		<!-- <button id="darkmode-btn">pimeja</button> -->
+		<button id="clear-btn">sin</button>
+		<select name="type" id="typeselector">
+			<option value="sitelenselikiwenatuki" selected>
+				sitelen seli kiwen
+			</option>
+			<option>
+				PuLukin
+			</option>
+			<option value="ponapona">
+				pona pona
+			</option>
+			<option value="helvetica">
+				Sans
+			</option>
+		</select>
+	</div>
+
+	<textarea id="lipu" spellcheck="false" autocorrect="off" label="tpinput" autocapitalize="none" autofocus>
+ijo sitelen lili ni:
+- lipu li awen
+- o sina ante e sitelen anpa
+- lipu pimeja anu lipu walo
+</textarea>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			function formatDate(date) {
+				const day = String(date.getDate())
+				const month = String(date.getMonth() + 1) // Months are 0-indexed
+				const year = String(date.getFullYear()).slice(2) // Get last two digits of year
+
+				return `[${day}.${month}.'${year}]\n\n`
+			}
+
+			if ("serviceWorker" in navigator) {
+				navigator.serviceWorker.register("/sw.js");
+			}
+
+			let textareaRef = document.getElementById("lipu")
+			let text = localStorage.getItem("lipu")
+
+			// Text field
+			if (text) {
+				textareaRef.value = text
+
+			} else {
+				textareaRef.value = formatDate(new Date()) + textareaRef.value
+				localStorage.getItem("lipu", textareaRef.value)
+			}
+
+			textareaRef.addEventListener("change", (e) => {
+				localStorage.setItem("lipu", e.target.value)
+			})
+
+			document.getElementById("clear-btn").addEventListener("click", () => {
+				textareaRef.value = formatDate(new Date())
+				localStorage.setItem("lipu", textareaRef.value)
+				textareaRef.focus()
+			})
+
+			// Darkmode
+			let pimeja = localStorage.getItem("pimeja")
+			if (pimeja == "pimeja") {
+				document.body.classList.toggle("pimeja", true)
+			} else if (pimeja == "walo") {
+				document.body.classList.toggle("walo", true)
+			}
+
+			document.getElementById("darkmode").addEventListener("change", (e) => {
+				let mode = e.target.value
+				localStorage.setItem("pimeja", mode)
+				console.log(mode)
+				document.body.classList.toggle("walo", false)
+				document.body.classList.toggle("pimeja", false)
+
+				if (mode == "light") {
+					document.body.classList.toggle("walo", true)
+				} else if (mode == "dark") {
+					document.body.classList.toggle("pimeja", true)
+				}
+			})
+
+			// Type select
+			const typeSelect = document.getElementById("typeselector")
+			let typeUse = localStorage.getItem('sitelen')
+			if (typeUse) {
+				typeSelect.value = typeUse
+				textareaRef.style.fontFamily = typeUse
+			} else {
+				typeSelect.value = "sitelenselikiwenatuki"
+				textareaRef.style.fontFamily = "sitelenselikiwenatuki"
+			}
+
+			typeSelect.addEventListener("change", (e) => {
+				localStorage.setItem("sitelen", e.target.value)
+				textareaRef.style.fontFamily = e.target.value
+				textareaRef.focus()
+			})
+		})
+	</script>
 </body>

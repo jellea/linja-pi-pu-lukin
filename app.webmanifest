@@ -1,0 +1,27 @@
+{
+  "name": "ijo sitelen lili",
+  "short_name": "sitelen",
+  "theme_color": "black",
+  "background_color": "white",
+  "start_url": "index.html",
+  "id": "ijo-sitelen-2",
+  "display": "standalone",
+  "scope": "./",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "icon512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "description": "This is a long text that can describe what your PWA does to the user",
+  "categories": [
+    "tools",
+    "education"
+  ]
+}
